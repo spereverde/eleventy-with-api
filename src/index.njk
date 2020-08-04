@@ -3,16 +3,37 @@ index: A page for you
 layout: base.njk
 ---
 
-<div class="container">
-    <h1>This is a page for you</h1>
-    <div class="vibe">You are great!</div>
-    <div class="love">
-    ❤️
+<div class="container py-md-3">
+  <h1>Harry Potter characters</h1>
+  <!--<p>
+    from <a href="https://www.potterapi.com/">https://www.potterapi.com/</a>
+  </p>-->
+  <div class="card-columns">
+    {% for character in characters %}
+    <div class="card text-center">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <div class="card-header">
+        {{ character.name }}
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <p><strong>species:</strong> {{ character.species }}</p>
+          {% if character.house %}<strong>house: </strong>{% endif %}
+            {% if character.house == "Gryffindor" %}
+                <span style="color: crimson;">Gryffindor</span>
+            {% endif %}
+            {% if character.house == "Hufflepuff" %}
+                <span style="color: gold;">Hufflepuff</span>
+            {% endif %}
+            {% if character.house == "Ravenclaw" %}
+                <span style="color: dodgerblue;">Ravenclaw</span>
+            {% endif %}
+            {% if character.house == "Slytherin" %}
+                <span style="color: seagreen;">Slytherin</span>
+            {% endif %}
+        </div>
+      </div>
     </div>
-    <ul>
-        {% for character in characters %}
-            <li>{{ character.name }}</li>
-        {% endfor %}
-    </ul>
+    {% endfor %}
+  </div>
 </div>
-<script src="js/vibe.js"></script>
